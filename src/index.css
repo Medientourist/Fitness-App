@@ -15,3 +15,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@layer base {
+  h1, h2, h3, h4, ul, li, p{
+    @apply text-light;
+    @apply font-standard;
+  }
+  
+  h1, h2, h3 {
+    font-weight: 700;
+  }
+}
+
+
