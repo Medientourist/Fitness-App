@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import startDark from "../../assets/startDark.png";
 /* import startLight from "../../assets/startLight.png"; */
 import workoutDark from "../../assets/workoutDark.png";
@@ -10,19 +12,19 @@ function Navigation() {
     <div className="bg-black">
       <nav className="flex justify-around space-x-8 p-4">
         <div className="inline">
-          <a>
+          <Link to="/">
             <img src={startDark} alt="Startseite" />
-          </a>
+          </Link>
         </div>
         <div className="inline">
-          <a>
+          <Link to="/workout">
             <img src={workoutDark} alt="Training" />
-          </a>
+          </Link>
         </div>
         <div className="inline">
-          <a>
+          <Link to="/profil">
             <img src={profilPictureDark} alt="Profil" />
-          </a>
+          </Link>
         </div>
       </nav>
     </div>
