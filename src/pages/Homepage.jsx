@@ -1,9 +1,9 @@
-import Navigation from "./components/navigation/Navigation";
+import Navigation from "../components/navigation/Navigation";
 
-import startPicture from "./assets/startPicture.png";
-import StartToday from "./components/start/StartToday";
+import startPicture from "../assets/startPicture.png";
+import StartToday from "../components/start/StartToday";
 
-function App() {
+function Homepage() {
   return (
     <div className="bg-dark pt-4">
       <h1 className="font-standard font-bold text-4xl px-4 pb-4">
@@ -16,4 +16,4 @@ function App() {
   );
 }
 
-export default App;
+export default Homepage;

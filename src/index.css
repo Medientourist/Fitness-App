@@ -33,4 +33,16 @@ code {
   h3 {
     font-weight: 700;
   }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
 }

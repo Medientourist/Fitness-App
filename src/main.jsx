@@ -1,12 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from "./App";
-import Workout from "./Workout";
-import Profil from "./Profil";
+import Homepage from "./pages/Homepage";
+import Workout from "./pages/Workout";
+import Profil from "./pages/Profil";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -14,7 +13,7 @@ const root = createRoot(container);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Homepage />,
   },
   {
     path: "/workout",
