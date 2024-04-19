@@ -17,13 +17,7 @@ code {
 }
 
 @layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  ul,
-  li,
-  p {
+  body {
     @apply text-light;
     @apply font-standard;
   }
