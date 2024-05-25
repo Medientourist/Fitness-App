@@ -2237,7 +2237,9 @@ __metadata:
     prettier: ^2.8.7
     react: ^18.2.0
     react-chartjs-2: ^5.2.0
+    react-circular-progressbar: ^2.1.0
     react-dom: ^18.2.0
+    react-progress-bar: ^0.1.0
     react-router-dom: ^6.22.3
     tailwindcss: ^3.3.1
     victory-pie: ^37.0.2
@@ -3878,6 +3880,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-circular-progressbar@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "react-circular-progressbar@npm:2.1.0"
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: dc118010a8f94733daafac586c969f7e889ad0736d96a0fda79406ee62e9410848abfd3dee4887bb0ff46b99e1f8c86ee1afabc88dfbf4dcb95107b22de1d6d7
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^18.2.0":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
@@ -3901,6 +3912,13 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
+  languageName: node
+  linkType: hard
+
+"react-progress-bar@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "react-progress-bar@npm:0.1.0"
+  checksum: 04d23e701599244a4fb280964c26a36c7e7a28f4d17ee40cfb66560b517a02c3ab87985e12bdba7bc44a6686c2ea79833b90cb3584742d22b49e546e7dc0983c
   languageName: node
   linkType: hard
 
