@@ -1,4 +1,5 @@
 import { useQuery, gql } from "@apollo/client";
+import { useState, useEffect } from "react";
 
 import OverviewButton from "./overviewButton";
 
@@ -22,28 +23,30 @@ const GET_PROGRAMS = gql`
 
 function OverviewMain() {
   const { loading, error, data } = useQuery(GET_PROGRAMS);
+  const [programClasses, setProgramClasses] = useState([]);
+
+  useEffect(() => {
+    if (data && data.programs) {
+      const classes = data.programs.map(() => getNextClass());
+      setProgramClasses(classes);
+    }
+  }, [data]);
 
   if (loading) return <p>Loading...</p>;
 
   if (error) return <p>Error : {error.message}</p>;
 
-  console.log(data);
-
   return (
     <div className="p-4">
       <h1 className="mb-32">Browse</h1>
       <div className="text-center mb-16">
-        {data.programs.map((program) => {
-          const nextClass = getNextClass();
-          console.log(program.name, nextClass);
-          return (
-            <OverviewButton
-              key={program.id}
-              title={program.name}
-              className={nextClass}
-            />
-          );
-        })}
+        {data.programs.map((program, index) => (
+          <OverviewButton
+            key={program.id}
+            title={program.name}
+            className={programClasses[index]}
+          />
+        ))}
       </div>
     </div>
   );

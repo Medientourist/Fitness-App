@@ -6,7 +6,7 @@ const classNamesList = [
 ];
 
 // Index der zuletzt verwendeten Klasse
-let lastIndex = 0;
+let lastIndex = -1;
 
 // Funktion, die eine Klasse aus der Liste zurückgibt
 function getNextClass() {
