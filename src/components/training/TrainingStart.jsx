@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import back from "../../assets/back.png";
 import ProgramStartButton from "../program/ProgramStartButton";
-import TrainingTimer from "./TrainingTimer";
 
 function Training() {
   return (
@@ -18,9 +17,6 @@ function Training() {
           <p>26 Min. • Kraft und Koordination</p>
         </div>
         <ProgramStartButton />
-      </div>
-      <div className="">
-        <TrainingTimer />
       </div>
     </div>
   );
