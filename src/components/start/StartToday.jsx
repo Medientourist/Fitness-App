@@ -2,7 +2,7 @@ function StartToday() {
   return (
     <div className="py-4">
       <div className="mb-5 px-4">
-        <h2 className="inline mr-4">Dein Workout heute</h2>
+        <h2 className="inline mr-4">Dein Workout heute maximales Workout</h2>
         <a className="text-white">Trainingsplan</a>
       </div>
       <div className="px-4">
