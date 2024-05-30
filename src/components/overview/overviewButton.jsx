@@ -3,11 +3,9 @@ import PropTypes from "prop-types";
 
 function OverviewButton({ title, className }) {
   return (
-    <>
-      <Link className={className}>
-        <h3>{title}</h3>
-      </Link>
-    </>
+    <Link className={className} to="/programs">
+      <h3>{title}</h3>
+    </Link>
   );
 }
 

@@ -9,7 +9,7 @@ import profilPictureDark from "../../assets/profilPictureDark.png";
 
 function Navigation() {
   return (
-    <div className="bg-black">
+    <div className="bg-black sticky bottom-0">
       <nav className="flex justify-around space-x-8 p-4">
         <div className="inline">
           <Link to="/">
