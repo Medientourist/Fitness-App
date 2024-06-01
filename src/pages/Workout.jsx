@@ -3,7 +3,7 @@ import Navigation from "../components/navigation/Navigation";
 
 function Workout() {
   return (
-    <div className="bg-dark pt-4">
+    <div className="min-h-screen bg-dark pt-4">
       <OverviewMain />
       <Navigation />
     </div>

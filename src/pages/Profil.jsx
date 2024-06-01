@@ -4,7 +4,7 @@ import WorkoutPlanProgress from "../components/profil/workoutPlanProgress";
 
 function Profil() {
   return (
-    <div className="bg-dark pt-4">
+    <div className="min-h-screen bg-dark pt-4">
       <ProfilMain />
       <WorkoutPlanProgress />
       <Navigation />

@@ -5,7 +5,7 @@ import ProgramStartButton from "../components/program/ProgramStartButton";
 
 function Programs() {
   return (
-    <div className="bg-dark">
+    <div className="min-h-screen flex flex-col bg-dark">
       <ProgramShortDescription />
       <div className="p-4">
         <p>Hinter den Bergen.</p>
@@ -13,6 +13,7 @@ function Programs() {
       <ProgramDiagram />
       <ProgramDayOverview />
       <ProgramStartButton />
+      <ProgressProgram />
     </div>
   );
 }
