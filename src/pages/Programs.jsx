@@ -13,7 +13,6 @@ function Programs() {
       <ProgramDiagram />
       <ProgramDayOverview />
       <ProgramStartButton />
-      <ProgressProgram />
     </div>
   );
 }

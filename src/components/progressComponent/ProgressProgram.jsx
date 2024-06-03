@@ -1,8 +1,8 @@
-import ProgressBar from './ProgressBar';
+import ProgressBar from "./ProgressBar";
 
 function ProgramProgress() {
   const steps = [1, 2, 3, 4, 5];
-  const currentStep = 3;
+  const currentStep = 1;
 
   return (
     <div className="p-4">
