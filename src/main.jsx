@@ -3,7 +3,6 @@ import "./index.css";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-
 import Homepage from "./pages/Homepage";
 import Workout from "./pages/Workout";
 import Profil from "./pages/Profil";
