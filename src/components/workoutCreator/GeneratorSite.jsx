@@ -6,25 +6,24 @@ import {
 import getEntryList from "../queries/entriesList";
 import { LoadingButton } from "../StatusElements/Loading";
 
-
 export default function CreateEntries() {
-  const entriesFetch = getEntryList();
-
+  const { data, loading, error } = getEntryList();
+  if (data) {
+    console.log(data);
+  }
   return (
     <>
       <CreateRandomExerciseButton />
-      {entriesFetch.loading ? (
+      {loading ? (
         <LoadingButton />
-      ) : entriesFetch.error ? (
+      ) : error ? (
         <div className="bg-red700 rounded-md pt-4">ERROR</div>
       ) : (
         <>
-          <CreateRandomWorkoutButton
-            exerciseList={entriesFetch.data.exercises}
-          />
+          <CreateRandomWorkoutButton exerciseList={data.exercises} />
           <CreateRandomProgramButton
-            workoutList={entriesFetch.data.workouts}
-            assetList={entriesFetch.data.assets}
+            workoutList={data.workouts}
+            assetList={data.assets}
           />
         </>
       )}

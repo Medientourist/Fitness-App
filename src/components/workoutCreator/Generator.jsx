@@ -1,21 +1,21 @@
 import { gql, useMutation } from "@apollo/client";
- 
+
 // usually This gets imported, but for ease of use I put it here.
 function LoadingButton() {
   return <div className="rounded-md bg-green-600 p-4">Loading...</div>;
 }
- 
+
 function getRandom(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
- 
+
 function randomInt(upperLimit = 10, lowerLimit = 0, step = 1) {
   const solution =
     Math.floor((Math.random() * (upperLimit - lowerLimit)) / step) * step +
     lowerLimit;
   return Math.round(solution); // It is rounded again, because I got problems of having floats in the graphql mutation string.
 }
- 
+
 function shuffleArray(array) {
   let currentIndex = array.length;
   while (currentIndex > 0) {
@@ -29,13 +29,13 @@ function shuffleArray(array) {
     }
   }
 }
- 
+
 function generateRandomList(length) {
   const list = Array.from(Array(length), (x, i) => i);
   shuffleArray(list);
   return list;
 }
- 
+
 export function CreateRandomExerciseButton() {
   function generateRandomExerciseMutation() {
     const names = [
@@ -91,7 +91,7 @@ export function CreateRandomExerciseButton() {
       "Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren. Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte.",
     ];
     const types = ["duration", "reps"];
- 
+
     const ADD_EXERCISE = gql`
     mutation AddExercise{
       createExercise(data:{name: "${getRandom(
@@ -109,11 +109,11 @@ export function CreateRandomExerciseButton() {
   `;
     return ADD_EXERCISE;
   }
- 
+
   const [addExercise, { data, loading, error }] = useMutation(
     generateRandomExerciseMutation()
   );
- 
+
   if (loading) return "Loading...";
   if (error) console.log(`Error: ${error.message}`);
   if (data) console.log(data);
@@ -123,7 +123,7 @@ export function CreateRandomExerciseButton() {
     </button>
   );
 }
- 
+
 export function CreateRandomWorkoutButton({ exerciseList }) {
   function generateRandomWorkoutMutation() {
     const categoryList = [
@@ -214,17 +214,17 @@ export function CreateRandomWorkoutButton({ exerciseList }) {
     const possibleIndices = generateRandomList(exerciseList.length); // Why is the simple Copy not working? There is some odd bug!
     const amountExercises = randomInt(
       exerciseList.length < 20 ? exerciseList.length : 20,
-      10
+      exerciseList.length < 10 ? 0 : 10
     ); // between 10 and 20 exercises
     const duration = randomInt(amountExercises * 1.2, amountExercises * 1.7); // between 1.2 and 1.7 minutes per exercise
     const exerciseTypeList = [
       ["reps", "ExerciseWithReps"],
       ["duration", "ExerciseWithDuration"],
     ];
- 
+
     function generateWorkoutExercisesList() {
       let workoutExercisesString = `[`;
- 
+
       for (let i = 0; i < amountExercises; i += 1) {
         const exerciseType = getRandom(exerciseTypeList);
         const exercise = exerciseList[possibleIndices[i]];
@@ -273,11 +273,11 @@ export function CreateRandomWorkoutButton({ exerciseList }) {
     `;
     return ADD_WORKOUT;
   }
- 
+
   const [addWorkout, { data, loading, error }] = useMutation(
     generateRandomWorkoutMutation()
   );
- 
+
   if (loading) return "Loading...";
   if (error) console.log(`Error: ${error.message}`);
   if (data) console.log(data);
@@ -287,7 +287,7 @@ export function CreateRandomWorkoutButton({ exerciseList }) {
     </button>
   );
 }
- 
+
 export function CreateRandomProgramButton({ workoutList, assetList }) {
   function generateRandomProgramMutation() {
     function generateWorkouts() {
@@ -300,7 +300,7 @@ export function CreateRandomProgramButton({ workoutList, assetList }) {
       };
       const workoutListLength = randomInt(
         workoutList.length < 28 ? workoutList.length : 28,
-        7
+        workoutList.length < 7 ? 0 : 7
       );
       let workoutListString = "[";
       for (let day = 1; day <= workoutListLength; day += 1) {
@@ -320,7 +320,7 @@ export function CreateRandomProgramButton({ workoutList, assetList }) {
       );
       return [workoutListString, focus];
     }
- 
+
     const descriptionList = [
       "Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte!",
       "Hatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?",
@@ -364,7 +364,7 @@ export function CreateRandomProgramButton({ workoutList, assetList }) {
       "Brendan",
       "Anuj",
     ];
- 
+
     const [workoutsString, focus] = generateWorkouts();
     const ADD_PROGRAM = gql`
     mutation AddProgram {
@@ -397,11 +397,11 @@ export function CreateRandomProgramButton({ workoutList, assetList }) {
     }`;
     return ADD_PROGRAM;
   }
- 
+
   const [addProgram, { data, loading, error }] = useMutation(
     generateRandomProgramMutation()
   );
- 
+
   if (loading) return <LoadingButton />;
   if (error) console.log(`Error: ${error.message}`);
   if (data) console.log(data);
@@ -411,4 +411,3 @@ export function CreateRandomProgramButton({ workoutList, assetList }) {
     </button>
   );
 }
- 

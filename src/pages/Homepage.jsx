@@ -1,9 +1,7 @@
 import Navigation from "../components/navigation/Navigation";
-
 import startPicture from "../assets/startPicture.png";
 import StartToday from "../components/start/StartToday";
 import LogIn from "../components/user/LogIn";
-
 import CreateEntries from "../components/workoutCreator/GeneratorSite";
 
 function Homepage() {
