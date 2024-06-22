@@ -9,7 +9,7 @@ function Homepage() {
     <div className="min-h-screen bg-dark pt-4">
       <LogIn initalName="User" />
       <img className="px-4 pb-4 m-auto" src={startPicture}></img>
-      <StartToday />
+      <StartToday /> 
       {/*<CreateEntries>*/}
       <Navigation />
     </div>
