@@ -4,7 +4,6 @@ import TrainingFinished from "../components/training/TrainingFinished";
 import TrainingStop from "../components/training/TrainingStop";
 import ProgressProgram from "../components/progressComponent/ProgressProgram";
 
-
 /*
 query GetPrograms($id: ID!) {
   programs(where: {id: $id}) {
@@ -13,11 +12,25 @@ query GetPrograms($id: ID!) {
   }
 }
 
+const GET_PROGRAMS = gql`
+  query GetPrograms {
+    programs {
+      id
+      name
+      duration
+      workoutsWithDay {
+        day
+        workout {
+          name
+        }
+      }
+    }
+  }
+`;
 
 Apollo DevTools
 React DevTools
 */
-
 
 function Training() {
   return (

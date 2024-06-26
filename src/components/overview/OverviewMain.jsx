@@ -20,6 +20,8 @@ const GET_PROGRAMS = gql`
   }
 `;
 
+//  (id:$id)
+
 function OverviewMain() {
   const { loading, error, data } = useQuery(GET_PROGRAMS);
   const [programClasses, setProgramClasses] = useState([]);
