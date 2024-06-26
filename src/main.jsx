@@ -5,10 +5,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Homepage from "./pages/Homepage";
-import Workout from "./pages/Workout";
+import Workout from "./pages/Workouts";
 import Profil from "./pages/Profil";
-import Programs from "./pages/Programs";
+import Program from "./pages/Program";
 import Training from "./pages/Training";
+import Workouts from "./pages/Workouts";
 
 const httpLink = createHttpLink({
   uri: "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clv6e28py000008l35aun5ekg/master",
@@ -40,15 +41,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/workout",
-    element: <Workout />,
+    element: <Workouts />,
   },
   {
     path: "/profil",
     element: <Profil />,
   },
   {
-    path: "/programs",
-    element: <Programs />,
+    path: "/program/:id",
+    element: <Program />,
   },
   {
     path: "/training",

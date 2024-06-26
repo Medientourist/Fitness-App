@@ -2,8 +2,12 @@ import ProgramShortDescription from "../components/program/ProgramShortDescripti
 import ProgramDiagram from "../components/program/ProgramDiagram";
 import ProgramDayOverview from "../components/program/ProgramDayOverview";
 import ProgramStartButton from "../components/program/ProgramStartButton";
+import { useLocation, useParams } from "react-router-dom";
 
-function Programs() {
+function Program() {
+  const location = useLocation();
+  const params = useParams();
+  
   return (
     <div className="min-h-screen flex flex-col bg-dark">
       <ProgramShortDescription />
@@ -17,4 +21,4 @@ function Programs() {
   );
 }
 
-export default Programs;
+export default Program;

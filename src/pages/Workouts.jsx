@@ -1,7 +1,7 @@
-import OverviewMain from "../components/overview/overviewMain";
+import OverviewMain from "../components/overview/OverviewMain";
 import Navigation from "../components/navigation/Navigation";
 
-function Workout() {
+function Workouts() {
   return (
     <div className="min-h-screen bg-dark pt-4">
       <OverviewMain />
@@ -10,4 +10,4 @@ function Workout() {
   );
 }
 
-export default Workout;
+export default Workouts;
