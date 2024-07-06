@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function OverviewButton({ programId, title, className }) {
+function OverviewButton({ programId, title, style }) {
   return (
-    <Link className={className} to={`/program/${programId}`}>
+    <Link
+      className={`${style} block text-white my-4 py-8 w-full rounded-3xl`}
+      to={`/program/${programId}?style=${encodeURIComponent(style)}`}
+    >
       <h3>{title}</h3>
     </Link>
   );
@@ -12,7 +15,7 @@ function OverviewButton({ programId, title, className }) {
 OverviewButton.propTypes = {
   programId: PropTypes.string.isRequired,
   title: PropTypes.string,
-  className: PropTypes.string,
+  style: PropTypes.string,
 };
 
 export default OverviewButton;
