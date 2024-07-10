@@ -1,3 +1,4 @@
+// import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import ProgramShortDescription from "../components/program/ProgramShortDescription";
@@ -14,6 +15,11 @@ const GET_PROGRAM = gql`
       difficulty
       duration
       description
+      workouts {
+        id
+        name
+        category
+      }
     }
   }
 `;
@@ -36,7 +42,15 @@ function Program() {
   const queryParams = new URLSearchParams(location.search);
   const style = queryParams.get("style") || "";
 
-  console.log(data);
+  const workoutsWithCategories = [];
+  if (program.workouts) {
+    program.workouts.forEach((workout) => {
+      workoutsWithCategories.push({
+        name: workout.name,
+        category: workout.category,
+      });
+    });
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-dark">
@@ -53,7 +67,18 @@ function Program() {
       <div className="p-4">
         <p>{program.description}</p>
       </div>
-      <ProgramDiagram />
+      <ProgramDiagram workouts={workoutsWithCategories} />
+      <div className="p-4">
+        <h2>Workouts</h2>
+        <ul>
+          {workoutsWithCategories.map((workout, index) => (
+            <li key={index}>
+              <p>Name: {workout.name}</p>
+              <p>Kategorie: {workout.category}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
       <ProgramDayOverview />
       <ProgramStartButton />
     </div>

@@ -44,7 +44,7 @@ ProgramShortDescription.propTypes = {
   title: PropTypes.string,
   focus: PropTypes.string,
   difficulty: PropTypes.string,
-  duration: PropTypes.string,
+  duration: PropTypes.number,
   style: PropTypes.string,
 };
 
