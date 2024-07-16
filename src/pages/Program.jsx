@@ -1,4 +1,3 @@
-// import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import ProgramShortDescription from "../components/program/ProgramShortDescription";
@@ -15,10 +14,26 @@ const GET_PROGRAM = gql`
       difficulty
       duration
       description
-      workouts {
+      workoutsWithDay {
         id
-        name
-        category
+        day
+        workout {
+          id
+          name
+          category
+          exercises {
+            ... on ExerciseWithDuration {
+              id
+              duration
+              stage
+            }
+            ... on ExerciseWithReps {
+              id
+              reps
+              stage
+            }
+          }
+        }
       }
     }
   }
@@ -43,11 +58,24 @@ function Program() {
   const style = queryParams.get("style") || "";
 
   const workoutsWithCategories = [];
-  if (program.workouts) {
-    program.workouts.forEach((workout) => {
+  if (program.workoutsWithDay) {
+    program.workoutsWithDay.forEach((workoutWithDay) => {
       workoutsWithCategories.push({
-        name: workout.name,
-        category: workout.category,
+        id: workoutWithDay.id,
+        day: workoutWithDay.day,
+        innerId: workoutWithDay.workout.id,
+        name: workoutWithDay.workout.name,
+        category: workoutWithDay.workout.category,
+      });
+    });
+  }
+
+  const workoutDay = [];
+  if (program.workoutsWithDay) {
+    program.workoutsWithDay.forEach((workoutWithDay) => {
+      workoutDay.push({
+        day: workoutWithDay.day,
+        workoutId: workoutWithDay.workout.id,
       });
     });
   }
@@ -71,16 +99,19 @@ function Program() {
       <div className="p-4">
         <h2>Workouts</h2>
         <ul>
-          {workoutsWithCategories.map((workout, index) => (
+          {workoutDay.map((workout, index) => (
             <li key={index}>
-              <p>Name: {workout.name}</p>
-              <p>Kategorie: {workout.category}</p>
+              <p>WorkoutId: {workout.workoutId}</p>
+              <p>Tag: {workout.day}</p>
             </li>
           ))}
         </ul>
       </div>
       <ProgramDayOverview />
-      <ProgramStartButton />
+      <ProgramStartButton
+        workoutId={workoutDay[0].workoutId}
+        day={workoutDay[0].day}
+      />
     </div>
   );
 }

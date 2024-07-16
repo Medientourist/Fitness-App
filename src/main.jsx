@@ -10,11 +10,10 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Homepage from "./pages/Homepage";
-import Workout from "./pages/Workouts";
+import Workouts from "./pages/Workouts";
 import Profil from "./pages/Profil";
 import Program from "./pages/Program";
 import Training from "./pages/Training";
-import Workouts from "./pages/Workouts";
 
 const httpLink = createHttpLink({
   uri: "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clv6e28py000008l35aun5ekg/master",
@@ -58,7 +57,7 @@ const router = createBrowserRouter([
     element: <Program />,
   },
   {
-    path: "/training",
+    path: "/training/:id",
     element: <Training />,
   },
 ]);
