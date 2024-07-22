@@ -16,7 +16,6 @@ function Training() {
           <h2>Tag 1</h2>
           <p>26 Min. • Kraft und Koordination</p>
         </div>
-        <ProgramStartButton />
       </div>
     </div>
   );
