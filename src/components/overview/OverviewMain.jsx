@@ -1,21 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
 import OverviewButton from "./OverviewButton";
+import { GET_PROGRAMS } from "../../queries/hygraphQueries";
 
-const GET_PROGRAMS = gql`
-  query GetPrograms {
-    programs {
-      id
-      name
-      duration
-      workoutsWithDay {
-        day
-        workout {
-          name
-        }
-      }
-    }
-  }
-`;
 
 function OverviewMain() {
   const { loading, error, data } = useQuery(GET_PROGRAMS);

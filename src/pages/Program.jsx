@@ -4,40 +4,8 @@ import ProgramShortDescription from "../components/program/ProgramShortDescripti
 import ProgramDiagram from "../components/program/ProgramDiagram";
 import ProgramDayOverview from "../components/program/ProgramDayOverview";
 import ProgramStartButton from "../components/program/ProgramStartButton";
+import { GET_PROGRAM } from "../queries/hygraphQueries";
 
-const GET_PROGRAM = gql`
-  query GetProgram($id: ID!) {
-    program(where: { id: $id }) {
-      id
-      name
-      focus
-      difficulty
-      duration
-      description
-      workoutsWithDay {
-        id
-        day
-        workout {
-          id
-          name
-          category
-          exercises {
-            ... on ExerciseWithDuration {
-              id
-              duration
-              stage
-            }
-            ... on ExerciseWithReps {
-              id
-              reps
-              stage
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 function Program() {
   const params = useParams();
@@ -109,8 +77,10 @@ function Program() {
       </div>
       <ProgramDayOverview />
       <ProgramStartButton
+        programId={filteredId}
         workoutId={workoutDay[0].workoutId}
         day={workoutDay[0].day}
+        style={style}
       />
     </div>
   );

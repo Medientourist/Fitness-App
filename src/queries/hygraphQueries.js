@@ -1,7 +1,6 @@
-/*
 import { useQuery, gql } from "@apollo/client";
 
-const GET_PROGRAMS = gql`
+export const GET_PROGRAMS = gql`
   query GetPrograms {
     programs {
       id
@@ -17,8 +16,7 @@ const GET_PROGRAMS = gql`
   }
 `;
 
-
-const GET_PROGRAM = gql`
+export const GET_PROGRAM = gql`
   query GetProgram($id: ID!) {
     program(where: { id: $id }) {
       id
@@ -27,7 +25,49 @@ const GET_PROGRAM = gql`
       difficulty
       duration
       description
+      workoutsWithDay {
+        id
+        day
+        workout {
+          id
+          name
+          category
+          exercises {
+            ... on ExerciseWithDuration {
+              id
+              duration
+              stage
+            }
+            ... on ExerciseWithReps {
+              id
+              reps
+              stage
+            }
+          }
+        }
+      }
     }
   }
 `;
-*/
+
+export const GET_WORKOUT = gql`
+  query GetWorkout($id: ID!) {
+    workout(where: { id: $id }) {
+      id
+      name
+      category
+      exercises {
+        ... on ExerciseWithDuration {
+          id
+          duration
+          stage
+        }
+        ... on ExerciseWithReps {
+          id
+          reps
+          stage
+        }
+      }
+    }
+  }
+`;

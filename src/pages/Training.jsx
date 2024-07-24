@@ -5,75 +5,46 @@ import TrainingStart from "../components/training/TrainingStart";
 import TrainingFinished from "../components/training/TrainingFinished";
 import TrainingStop from "../components/training/TrainingStop";
 import ProgressProgram from "../components/progressComponent/ProgressProgram";
+import { GET_WORKOUT } from "../queries/hygraphQueries";
 
 /*
 Apollo DevTools
 React DevTools
 */
 
-const GET_PROGRAM = gql`
-  query GetProgram($id: ID!) {
-    program(where: { id: $id }) {
-      id
-      name
-      focus
-      difficulty
-      duration
-      description
-      workoutsWithDay {
-        id
-        day
-        workout {
-          id
-          name
-          category
-          exercises {
-            ... on ExerciseWithDuration {
-              id
-              duration
-              stage
-            }
-            ... on ExerciseWithReps {
-              id
-              reps
-              stage
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 function Training() {
-  // const params = useParams();
-  // const location = useLocation();
+  const params = useParams();
+  const location = useLocation();
 
-  // const filteredId = params.id;
+  const filteredId = params.id;
 
-  // const { loading, error, data } = useQuery(GET_PROGRAM, {
-  //   variables: { id: filteredId },
-  // });
+  const { loading, error, data } = useQuery(GET_WORKOUT, {
+    variables: { id: filteredId },
+  });
 
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
-  // const { program } = data;
+  const { workout } = data;
+  const url = decodeURIComponent(location.pathname + location.search);
 
-  // // const workoutsWithCategories = [];
-  // // if (program.workoutsWithDay) {
-  // //   program.workoutsWithDay.forEach((workoutWithDay) => {
-  // //     workoutsWithCategories.push({
-  // //       day: workoutWithDay.day,
-  // //       name: workoutWithDay.workout.name,
-  // //       category: workoutWithDay.workout.category,
-  // //     });
-  // //   });
-  // // }
+  const pathSegments = location.pathname.split("/");
+  const programId = pathSegments[pathSegments.length - 1];
+
+  const queryParams = new URLSearchParams(location.search);
+
+  const workoutId = queryParams.get("workoutId");
+  const day = queryParams.get("day");
+  const style = queryParams.get("style") || "";
 
   return (
     <div className="min-h-screen flex flex-col bg-dark pt-4">
-      <TrainingStart />
+      <TrainingStart
+        programId={programId}
+        workoutId={workoutId}
+        day={day}
+        style={style}
+      />
       <ProgressProgram />
       <TrainingMoreInformation />
       <TrainingFinished />
