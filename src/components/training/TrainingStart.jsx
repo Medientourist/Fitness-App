@@ -3,7 +3,7 @@ import back from "../../assets/back.png";
 import { useParams, useLocation } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import { GET_PROGRAM, GET_WORKOUT } from "../../queries/hygraphQueries";
-import TrainingButtons from "./TrainingButtons";
+import TrainingStartButton from "./TrainingStartButton";
 
 function Training({ programId, workoutId, day, style }) {
   const {
@@ -46,7 +46,7 @@ function Training({ programId, workoutId, day, style }) {
         <div className="flex flex-col justify-center items-center flex-grow">
           <h2>Tag {day}</h2>
           <p>26 Min. • {workout.category}</p>
-          <TrainingButtons programId={programId} workoutId={workoutId} day={day} style={style} />
+          <TrainingStartButton programId={programId} workoutId={workoutId} day={day} style={style} />
         </div>
       </div>
     </div>

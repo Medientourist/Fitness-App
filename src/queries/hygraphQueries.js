@@ -71,3 +71,23 @@ export const GET_WORKOUT = gql`
     }
   }
 `;
+
+export const GET_EXERCISES = gql`
+  query GetExercises {
+    exercises {
+      id
+      name
+      category
+    }
+  }
+`;
+
+export const GET_EXERCISE = gql`
+  query GetExercise($id: ID!) {
+    exercise(where: { id: $id }) {
+      id
+      name
+      category
+    }
+  }
+`;

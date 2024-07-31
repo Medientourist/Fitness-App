@@ -1,14 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
-import { useQuery, gql } from "@apollo/client";
-import TrainingStart from "../components/training/TrainingStart";
-import { GET_WORKOUT } from "../queries/hygraphQueries";
-
-/*
-Apollo DevTools
-React DevTools
-*/
-
-function Training() {
+function helperLoadingTrainingsdata({ programId, workoutId, day, style }) {
   const params = useParams();
   const location = useLocation();
 
@@ -32,17 +22,4 @@ function Training() {
   const workoutId = queryParams.get("workoutId");
   const day = queryParams.get("day");
   const style = queryParams.get("style") || "";
-
-  return (
-    <div className="min-h-screen flex flex-col bg-dark pt-4">
-      <TrainingStart
-        programId={programId}
-        workoutId={workoutId}
-        day={day}
-        style={style}
-      />
-    </div>
-  );
 }
-
-export default Training;

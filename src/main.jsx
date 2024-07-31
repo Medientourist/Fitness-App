@@ -14,6 +14,7 @@ import Workouts from "./pages/Workouts";
 import Profil from "./pages/Profil";
 import Program from "./pages/Program";
 import Training from "./pages/Training";
+import TrainingActive from "./pages/TrainingActive";
 
 const httpLink = createHttpLink({
   uri: "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clv6e28py000008l35aun5ekg/master",
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
     path: "/training/:id",
     element: <Training />,
   },
+  {
+    path: "/trainingActive/:id",
+    element: <TrainingActive />,
+  }
 ]);
 
 root.render(
