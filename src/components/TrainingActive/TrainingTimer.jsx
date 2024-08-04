@@ -2,26 +2,25 @@ import { useState, useEffect } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-function TrainingTimer() {
-  const [timeLeft, setTimeLeft] = useState(90); // 1,5 Minuten = 90 Sekunden
-  const totalTime = 90; // Gesamtzeit in Sekunden
+function TrainingTimer({ time }) {
+  const [timeLeft, setTimeLeft] = useState(time * 1000);
+  const totalTime = time * 1000;
 
-  // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (timeLeft > 0) {
       const timer = setInterval(() => {
-        setTimeLeft((prevTime) => prevTime - 1);
-      }, 1000);
+        setTimeLeft((prevTime) => Math.max(prevTime - 10, 0));
+      }, 10);
 
-      return () => clearInterval(timer); // Cleanup the interval on component unmount
+      return () => clearInterval(timer);
     }
   }, [timeLeft]);
 
   const percentage = ((totalTime - timeLeft) / totalTime) * 100;
-  const seconds = Math.floor(timeLeft);
+  const seconds = (timeLeft / 1000).toFixed(0);
 
   return (
-    <>
+    <div className="inline w-2/4">
       <CircularProgressbar
         value={percentage}
         text={`${seconds} seconds`}
@@ -29,7 +28,7 @@ function TrainingTimer() {
           rotation: 0,
           strokeLinecap: "butt",
           textSize: "0.75rem",
-          pathTransitionDuration: 10,
+          pathTransitionDuration: 0.1,
           pathColor: `rgba(255, 165, 199)`,
           textColor: "#f88",
           fontWeight: "extrabold",
@@ -37,7 +36,7 @@ function TrainingTimer() {
           backgroundColor: "#3e98c7",
         })}
       />
-    </>
+    </div>
   );
 }
 

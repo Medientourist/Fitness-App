@@ -60,34 +60,22 @@ export const GET_WORKOUT = gql`
         ... on ExerciseWithDuration {
           id
           duration
-          stage
+          exercise {
+            id
+            name
+            description
+          }
         }
         ... on ExerciseWithReps {
           id
           reps
-          stage
+          exercise {
+            id
+            name
+            description
+          }
         }
       }
-    }
-  }
-`;
-
-export const GET_EXERCISES = gql`
-  query GetExercises {
-    exercises {
-      id
-      name
-      category
-    }
-  }
-`;
-
-export const GET_EXERCISE = gql`
-  query GetExercise($id: ID!) {
-    exercise(where: { id: $id }) {
-      id
-      name
-      category
     }
   }
 `;
