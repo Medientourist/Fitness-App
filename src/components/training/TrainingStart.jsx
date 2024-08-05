@@ -29,7 +29,6 @@ function Training({ programId, workoutId, day, style }) {
 
   const { program } = dataProgram;
   const { workout } = dataWorkout;
-  console.log(workout);
 
   return (
     <div>

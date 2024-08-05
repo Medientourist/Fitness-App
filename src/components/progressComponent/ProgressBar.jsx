@@ -6,7 +6,7 @@ function ProgressBar({ steps, currentStep }) {
     <div className="flex items-center">
       {steps.map((_, index) => (
         <React.Fragment key={index}>
-          <ProgressPoint isCompleted={index < currentStep} />
+          <ProgressPoint isCompleted={index < currentStep + 1} />
           {index < steps.length - 1 && (
             <div className="flex-grow h-px border-dashed border-t-2 border-gray-300 mx-2"></div>
           )}

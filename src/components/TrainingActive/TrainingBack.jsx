@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Return from "../../assets/return.png";
 export default function TrainingBack({ onClick, back, programId, workoutId, day, style }) {
 
-console.log(back)
   return (
     <div className="inline w-1/4">
       {back ? (

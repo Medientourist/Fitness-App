@@ -1,8 +1,10 @@
 import ProgressBar from "./ProgressBar";
 
-function ProgramProgress() {
-  const steps = [1, 2, 3, 4, 5];
-  const currentStep = 1;
+function ProgramProgress({ length, currentStep }) {
+  const steps = [];
+  for (let i = 0; i < length; i++) {
+    steps.push(i + 1);
+  }
 
   return (
     <div className="p-4">

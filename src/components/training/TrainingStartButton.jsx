@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 function TrainingStartButton({ programId, workoutId, day, style }) {
-  console.log(programId, workoutId, day, style);
   return (
     <div className="flex flex-row justify-center items-center">
       <Link

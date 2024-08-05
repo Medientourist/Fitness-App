@@ -6,7 +6,6 @@ import ProgramDayOverview from "../components/program/ProgramDayOverview";
 import ProgramStartButton from "../components/program/ProgramStartButton";
 import { GET_PROGRAM } from "../queries/hygraphQueries";
 
-
 function Program() {
   const params = useParams();
   const location = useLocation();
@@ -64,17 +63,6 @@ function Program() {
         <p>{program.description}</p>
       </div>
       <ProgramDiagram workouts={workoutsWithCategories} />
-      <div className="p-4">
-        <h2>Workouts</h2>
-        <ul>
-          {workoutDay.map((workout, index) => (
-            <li key={index}>
-              <p>WorkoutId: {workout.workoutId}</p>
-              <p>Tag: {workout.day}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
       <ProgramDayOverview />
       <ProgramStartButton
         programId={filteredId}

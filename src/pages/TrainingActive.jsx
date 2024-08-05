@@ -9,7 +9,6 @@ import TrainingBack from "../components/TrainingActive/TrainingBack";
 import TrainingForward from "../components/TrainingActive/TrainingForward";
 import TrainingTimer from "../components/TrainingActive/TrainingTimer";
 import TrainingRepetition from "../components/TrainingActive/TrainingRepetition";
-import TrainingRepetition from "../components/TrainingActive/TrainingRepetition";
 import TrainingStop from "../components/TrainingActive/TrainingStop";
 import TrainingMoreInformation from "../components/TrainingActive/TrainingMoreInformation";
 import TrainingFinished from "../components/TrainingActive/TrainingFinished";
@@ -56,7 +55,7 @@ function TrainingActive() {
             day={day}
             style={style}
           />
-          <ProgressProgram />
+          <ProgressProgram length={workout.exercises.length} currentStep={exerciseNumber} />
           <div className="flex items-center justify-between">
             <TrainingBack
               onClick={handleBack}
