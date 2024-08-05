@@ -1,6 +1,7 @@
 // import Navigation from "../components/navigation/Navigation";
+import { Link } from "react-router-dom";
 
-function TrainingFinished() {
+function TrainingFinished({ programId, workoutId, day, style }) {
   return (
     <div className="bg-dark text-center">
       <h1>Glückwunsch</h1>
@@ -13,7 +14,13 @@ function TrainingFinished() {
           <button className="bg-medium p-4 flex-1 mx-2">genau richtig</button>
           <button className="bg-medium p-4 flex-1 mx-2">zu schwer</button>
         </div>
-        <p className="">Bewertung überspringen</p>
+        <Link
+          to={`/program/${programId}?workoutId=${encodeURIComponent(
+            workoutId
+          )}&day=${encodeURIComponent(day)}&style=${encodeURIComponent(style)}`}
+        >
+          Bewertung überspringen
+        </Link>
       </div>
     </div>
   );
