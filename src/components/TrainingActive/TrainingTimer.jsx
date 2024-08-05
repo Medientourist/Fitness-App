@@ -7,6 +7,10 @@ function TrainingTimer({ time }) {
   const totalTime = time * 1000;
 
   useEffect(() => {
+    setTimeLeft(time * 1000); // Reset timeLeft whenever time prop changes
+  }, [time]);
+
+  useEffect(() => {
     if (timeLeft > 0) {
       const timer = setInterval(() => {
         setTimeLeft((prevTime) => Math.max(prevTime - 10, 0));

@@ -41,7 +41,7 @@ function TrainingActive() {
 
   const handleForward = () => {
     setExerciseNumber((prev) =>
-      prev < workout.exercises.length ? prev + 1 : prev
+      prev < workout.exercises.length - 1 ? prev + 1 : prev
     );
   };
 
@@ -55,7 +55,10 @@ function TrainingActive() {
             day={day}
             style={style}
           />
-          <ProgressProgram length={workout.exercises.length} currentStep={exerciseNumber} />
+          <ProgressProgram
+            length={workout.exercises.length}
+            currentStep={exerciseNumber}
+          />
           <div className="flex items-center justify-between">
             <TrainingBack
               onClick={handleBack}
