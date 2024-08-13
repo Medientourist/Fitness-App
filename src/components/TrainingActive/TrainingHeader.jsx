@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import TrainingStop from "./TrainingStop";
 import { GET_WORKOUT } from "../../queries/hygraphQueries";
+import Close from "../../assets/close.png";
 
 function TrainingHeader({ programId, workoutId, day, style }) {
   const [isClicked, setIsClicked] = useState(false);
@@ -27,7 +28,7 @@ function TrainingHeader({ programId, workoutId, day, style }) {
       <div className="flex items-center justify-center">
         <p className="text-white">{workout.name}</p>
         <img
-          src="../../assets/close.png"
+          src={Close}
           alt="stop"
           className="cursor-pointer absolute right-4"
           onClick={handleClick}

@@ -36,8 +36,11 @@ function TrainingActive() {
   const { workout } = data;
   const currentExercise = workout.exercises[exerciseNumber];
 
+  // Berechnung der aktuellen Schritte unter Berücksichtigung der Pausen
+  const totalSteps = workout.exercises.length * 2 - 1;
+  const currentStep = isBreak ? exerciseNumber * 2 : exerciseNumber * 2 - 1;
+
   const handleBack = () => {
-    console.log(exerciseNumber);
     if (isBreak) {
       setIsBreak(false);
     } else {
@@ -58,8 +61,7 @@ function TrainingActive() {
       setExerciseNumber((prev) =>
         prev < workout.exercises.length ? prev + 1 : prev
       );
-    }
-    else {
+    } else {
       setIsBreak(true);
     }
   };
@@ -76,7 +78,7 @@ function TrainingActive() {
           />
           <ProgressProgram
             length={workout.exercises.length}
-            currentStep={exerciseNumber}
+            currentStep={currentStep}
           />
           <div className="flex items-center justify-between">
             <TrainingBack

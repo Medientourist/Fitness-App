@@ -1,17 +1,20 @@
 import ProgressBar from "./ProgressBar";
 
-function ProgramProgress({ length, currentStep }) {
-  const steps = [];
+function ProgressProgram({ length, currentStep }) {
+  currentStep = currentStep + 1;
+  const isBreak = [];
   for (let i = 0; i < length; i++) {
-    steps.push(i + 1);
+    isBreak.push(false);
+    if (i < length - 1) {
+      isBreak.push(true);
+    }
   }
 
   return (
     <div className="p-4">
-      <h1 className="mb-4">Program Progress</h1>
-      <ProgressBar steps={steps} currentStep={currentStep} />
+      <ProgressBar isBreak={isBreak} currentStep={currentStep} />
     </div>
   );
 }
 
-export default ProgramProgress;
+export default ProgressProgram;
