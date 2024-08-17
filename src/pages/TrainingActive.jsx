@@ -110,6 +110,7 @@ function TrainingActive() {
             <>
               <h2>{currentExercise.exercise.name}</h2>
               <TrainingMoreInformation
+                name={currentExercise.exercise.name}
                 description={currentExercise.exercise.description}
               />
             </>
