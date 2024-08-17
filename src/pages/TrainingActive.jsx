@@ -9,8 +9,9 @@ import TrainingBack from "../components/TrainingActive/TrainingBack";
 import TrainingForward from "../components/TrainingActive/TrainingForward";
 import TrainingTimer from "../components/TrainingActive/TrainingTimer";
 import TrainingRepetition from "../components/TrainingActive/TrainingRepetition";
-import TrainingBreak from "../components/TrainingActive/TrainingBreak";
 import TrainingMoreInformation from "../components/TrainingActive/TrainingMoreInformation";
+import TrainingBreak from "../components/TrainingActive/TrainingBreak";
+import TrainingSkip from "../components/TrainingActive/TrainingSkip";
 import TrainingFinished from "../components/TrainingActive/TrainingFinished";
 
 function TrainingActive() {
@@ -50,7 +51,6 @@ function TrainingActive() {
   };
 
   const handleForward = () => {
-    console.log(exerciseNumber);
     if (exerciseNumber < workout.exercises.length - 1 && isBreak) {
       setIsBreak(false);
       setExerciseNumber((prev) =>
@@ -66,8 +66,13 @@ function TrainingActive() {
     }
   };
 
+  // Dynamischer Hintergrund basierend auf isBreak
+  const backgroundColorClass = isBreak ? "bg-medium" : "bg-dark";
+
   return (
-    <div className="bg-dark min-h-screen flex flex-col text-center">
+    <div
+      className={`${backgroundColorClass} min-h-screen flex flex-col text-center`}
+    >
       {exerciseNumber < workout.exercises.length ? (
         <>
           <TrainingHeader
@@ -80,7 +85,7 @@ function TrainingActive() {
             length={workout.exercises.length}
             currentStep={currentStep}
           />
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-16">
             <TrainingBack
               onClick={handleBack}
               back={exerciseNumber === 0 && !isBreak}
@@ -106,6 +111,7 @@ function TrainingActive() {
               style={style}
             />
           </div>
+          {isBreak ? <TrainingSkip handleForward={handleForward} /> : null}
           {!isBreak && (
             <>
               <h2>{currentExercise.exercise.name}</h2>

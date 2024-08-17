@@ -24,7 +24,7 @@ function TrainingHeader({ programId, workoutId, day, style }) {
   };
 
   return (
-    <div className="text-center mt-2.5 relative">
+    <div className="text-center relative mt-4">
       <div className="flex items-center justify-center">
         <p className="text-white">{workout.name}</p>
         <img

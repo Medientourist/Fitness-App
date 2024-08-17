@@ -3,7 +3,7 @@ import ProgressPoint from "./ProgressPoint";
 
 function ProgressBar({ isBreak, currentStep }) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center mt-8">
       {isBreak.map((breakStatus, index) => (
         <React.Fragment key={index}>
           <ProgressPoint
