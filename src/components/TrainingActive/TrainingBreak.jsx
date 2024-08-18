@@ -41,7 +41,6 @@ function TrainingBreak() {
             backgroundColor: "#3e98c7",
           })}
         />
-        <h2>Pause</h2>
       </div>
     </>
   );

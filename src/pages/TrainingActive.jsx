@@ -111,7 +111,12 @@ function TrainingActive() {
               style={style}
             />
           </div>
-          {isBreak ? <TrainingSkip handleForward={handleForward} /> : null}
+          {isBreak ? (
+            <>
+              <h2>Pause</h2>
+              <TrainingSkip handleForward={handleForward} />
+            </>
+          ) : null}
           {!isBreak && (
             <>
               <h2>{currentExercise.exercise.name}</h2>

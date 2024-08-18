@@ -6,7 +6,7 @@ function StartToday() {
         <a className="text-white">Trainingsplan</a>
       </div>
       <div className="px-4">
-        <button className="bg-medium text-white text-left pt-16 pb-5 pl-5 w-full rounded-3xl">
+        <button className="bg-medium text-white text-left pt-12 pb-5 pl-5 w-full rounded-3xl">
           Tag 2 <br /> Titel des Programms <br /> 26 Min. Beweglichkeit
         </button>
       </div>

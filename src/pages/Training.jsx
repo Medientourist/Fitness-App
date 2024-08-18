@@ -34,7 +34,7 @@ function Training() {
   const style = queryParams.get("style") || "";
 
   return (
-    <div className="min-h-screen flex flex-col bg-dark pt-4">
+    <div className="min-h-screen flex flex-col bg-dark">
       <TrainingStart
         programId={programId}
         workoutId={workoutId}
