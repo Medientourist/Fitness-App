@@ -41,9 +41,9 @@ function OverviewMain() {
   if (error) return <p>Error: {error.message}</p>;
 
   const buttonStyles = [
-    "bg-medium",
-    "bg-gradient-light-orange",
-    "bg-gradient-bright-cyan",
+    "bg-cyan-to-yellow-tl-br",
+    "bg-orange-to-peach-tl-br",
+    "bg-cyan-to-blue-tl-br",
   ];
 
   return (

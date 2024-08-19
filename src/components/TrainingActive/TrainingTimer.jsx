@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
 
 function TrainingTimer({ time }) {
   const [timeLeft, setTimeLeft] = useState(time * 1000);
