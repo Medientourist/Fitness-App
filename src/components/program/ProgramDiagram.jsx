@@ -3,7 +3,7 @@ import ProgramPieChart from "./ProgramPieChart";
 
 function ProgramDiagram({ workouts }) {
   return (
-    <div className="p-4 bg-black">
+    <div className="p-4 bg-dark">
       <p className="mb-4">So ist das Program aufgeteilt:</p>
       <div className="flex">
         <div>

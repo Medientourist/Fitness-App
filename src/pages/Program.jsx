@@ -7,6 +7,7 @@ import ProgramStartButton from "../components/program/ProgramStartButton";
 import { GET_PROGRAM } from "../queries/hygraphQueries";
 
 function Program() {
+  const i = 0;
   const params = useParams();
   const location = useLocation();
 
@@ -48,7 +49,7 @@ function Program() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-dark">
+    <div className="bg-medium pb-[4.5rem]">
       <ProgramShortDescription
         key={program.id}
         programId={program.id}
@@ -57,6 +58,8 @@ function Program() {
         difficulty={program.difficulty}
         duration={program.duration}
         description={program.description}
+        workoutId={workoutDay[i].workoutId}
+        day={workoutDay[i].day}
         style={style}
       />
       <div className="p-4">
@@ -64,12 +67,10 @@ function Program() {
       </div>
       <ProgramDiagram workouts={workoutsWithCategories} />
       <ProgramDayOverview />
-      <ProgramStartButton
+      {/* <ProgramStartButton
         programId={filteredId}
-        workoutId={workoutDay[0].workoutId}
-        day={workoutDay[0].day}
         style={style}
-      />
+      /> */}
     </div>
   );
 }

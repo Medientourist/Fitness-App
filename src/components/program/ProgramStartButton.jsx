@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 
 function ProgramStartButton({ programId, workoutId, day, style }) {
   return (
-    <div className="sticky bottom-16 flex justify-center w-full">
+    <div className="fixed bottom-4 z-10 flex justify-center w-full">
       <Link
         to={`/training/${encodeURIComponent(programId)}?workoutId=${encodeURIComponent(
           workoutId
         )}&day=${encodeURIComponent(day)}&style=${encodeURIComponent(style)}`}
-        className="bg-gradient-light-orange text-black rounded-3xl px-4 py-2"
+        className={`${style} text-black rounded-3xl px-4 py-2`}
       >
         Jetzt starten
       </Link>
