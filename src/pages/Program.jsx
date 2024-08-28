@@ -50,7 +50,6 @@ function Program() {
   }
 
   const lastDay = workoutDay[workoutDay.length - 1].day;
-  console.log(lastDay);
 
   return (
     <div className="bg-dark pb-[4.5rem]">
@@ -66,7 +65,7 @@ function Program() {
         day={workoutDay[i].day}
         style={style}
       />
-      <div className="p-4">
+      <div className="p-4 bg-medium">
         <p>{program.description}</p>
       </div>
       <ProgramDiagram workouts={workoutsWithCategories} />
