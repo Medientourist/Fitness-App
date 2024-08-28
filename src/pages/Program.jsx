@@ -1,5 +1,5 @@
 import { useParams, useLocation } from "react-router-dom";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import ProgramShortDescription from "../components/program/ProgramShortDescription";
 import ProgramDiagram from "../components/program/ProgramDiagram";
 import ProgramDayOverview from "../components/program/ProgramDayOverview";
@@ -34,6 +34,7 @@ function Program() {
         innerId: workoutWithDay.workout.id,
         name: workoutWithDay.workout.name,
         category: workoutWithDay.workout.category,
+        duration: workoutWithDay.workout.duration,
       });
     });
   }
@@ -48,8 +49,11 @@ function Program() {
     });
   }
 
+  const lastDay = workoutDay[workoutDay.length - 1].day;
+  console.log(lastDay);
+
   return (
-    <div className="bg-medium pb-[4.5rem]">
+    <div className="bg-dark pb-[4.5rem]">
       <ProgramShortDescription
         key={program.id}
         programId={program.id}
@@ -66,11 +70,7 @@ function Program() {
         <p>{program.description}</p>
       </div>
       <ProgramDiagram workouts={workoutsWithCategories} />
-      <ProgramDayOverview />
-      {/* <ProgramStartButton
-        programId={filteredId}
-        style={style}
-      /> */}
+      <ProgramDayOverview dayLength={lastDay} workoutsWithCategories={workoutsWithCategories} />
     </div>
   );
 }

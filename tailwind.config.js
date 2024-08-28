@@ -9,7 +9,7 @@ module.exports = {
       },
       backgroundImage: {
         "cyan-to-yellow-tl-br":
-          "linear-gradient(to bottom right, #F5FFA0, #3EF3E8)",
+          "linear-gradient(to bottom right, #3EF3E8, #F5FFA0)",
         "cyan-to-yellow-l-b":
           "linear-gradient(to right, rgb(62, 243, 232), rgb(245, 255, 160))",
         "orange-to-peach-tl-br":

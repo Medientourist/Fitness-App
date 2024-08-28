@@ -32,6 +32,7 @@ export const GET_PROGRAM = gql`
           id
           name
           category
+          duration
           exercises {
             ... on ExerciseWithDuration {
               id
