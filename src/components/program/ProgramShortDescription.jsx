@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import close from "../../assets/close.png";
-import Program from "../../pages/Program";
 import ProgramStartButton from "./ProgramStartButton";
 
 function ProgramShortDescription({
@@ -39,12 +38,12 @@ function ProgramShortDescription({
             <p>Wochen {duration}</p>
           </div>
         </div>
-          <ProgramStartButton
-            programId={programId}
-            workoutId={workoutId}
-            day={day}
-            style={style}
-          />
+        <ProgramStartButton
+          programId={programId}
+          workoutId={workoutId}
+          day={day}
+          style={style}
+        />
       </div>
     </div>
   );

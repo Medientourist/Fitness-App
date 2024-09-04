@@ -66,7 +66,6 @@ function TrainingActive() {
     }
   };
 
-  // Dynamischer Hintergrund basierend auf isBreak
   const backgroundColorClass = isBreak ? "bg-medium" : "bg-dark";
 
   return (
@@ -117,6 +116,7 @@ function TrainingActive() {
               <TrainingSkip handleForward={handleForward} />
             </>
           ) : null}
+          {/* Angleichen */}
           {!isBreak && (
             <>
               <h2>{currentExercise.exercise.name}</h2>

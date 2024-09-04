@@ -7,6 +7,9 @@ import workoutLight from "../../assets/workoutLight.png";
 import profilDark from "../../assets/profilDark.png";
 import profilLight from "../../assets/profilLight.png";
 
+// Generischer Import * import
+// Object für Images
+
 function Navigation() {
   const location = useLocation();
   const currentPath = location.pathname;

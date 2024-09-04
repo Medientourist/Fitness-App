@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.9.11",
+    "@patternfly/react-charts": "^7.4.0",
     "chart.js": "^4.4.3",
     "graphql": "^16.8.1",
     "react": "^18.2.0",
@@ -18,6 +19,7 @@
     "react-minimal-pie-chart": "^8.4.0",
     "react-progress-bar": "^0.1.0",
     "react-router-dom": "^6.22.3",
+    "victory": "^37.0.2",
     "victory-pie": "^37.0.2"
   },
   "devDependencies": {

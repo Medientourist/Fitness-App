@@ -4,11 +4,11 @@ import ProgramPieChart from "./ProgramPieChart";
 function ProgramDiagram({ workouts }) {
   return (
     <div className="p-4 bg-dark">
-      <p className="mb-4 text-lg font-bold">So ist das Program aufgeteilt:</p>
-      <div className="flex">
-        <div>
-          <ProgramPieChart workouts={workouts} />
-        </div>
+      <p className="mb-4 text-lg font-bold text-white">
+        So ist das Programm aufgeteilt:
+      </p>
+      <div className="flex justify-center items-center h-96 w-full">
+        <ProgramPieChart workouts={workouts} />
       </div>
     </div>
   );
@@ -22,4 +22,5 @@ ProgramDiagram.propTypes = {
     })
   ).isRequired,
 };
+
 export default ProgramDiagram;

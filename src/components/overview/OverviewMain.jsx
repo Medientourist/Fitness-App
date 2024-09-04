@@ -3,6 +3,9 @@ import { useQuery } from "@apollo/client";
 import OverviewButton from "./OverviewButton";
 import { GET_PROGRAMS } from "../../queries/hygraphQueries";
 
+// Nachladen und nicht nur scrollen. Optimaler
+// Vielleicht lieber alle anzeigen und dann scrollen
+
 function OverviewMain() {
   const { loading, error, data } = useQuery(GET_PROGRAMS);
   const [visiblePrograms, setVisiblePrograms] = useState([]);

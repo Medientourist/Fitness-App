@@ -1,19 +1,13 @@
 import PropTypes from "prop-types";
 import { GET_WORKOUT } from "../../queries/hygraphQueries";
 
-/*
-  "inline-block bg-cyan-to-yellow-tl-br text-white my-4 py-8 w-3/12 rounded-l-3xl",
-  "inline-block bg-orange-to-peach-tl-br text-white my-4 py-8 w-3/12 rounded-l-3xl",
-  "inline-block bg-cyan-to-blue-tl-br text-white my-4 py-8 w-3/12 rounded-l-3xl",
-*/
+const colorStyles = [
+  "bg-orange-to-peach-tl-br",
+  "bg-cyan-to-yellow-tl-br",
+  "bg-cyan-to-blue-tl-br",
+];
 
 function ProgramDayOverview({ dayLength, workoutsWithCategories }) {
-  const colorStyles = [
-    "bg-orange-to-peach-tl-br",
-    "bg-cyan-to-yellow-tl-br",
-    "bg-cyan-to-blue-tl-br",
-  ];
-
   return (
     <div className="p-4">
       <div className="flex justify-between align-middle">

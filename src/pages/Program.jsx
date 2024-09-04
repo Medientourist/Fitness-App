@@ -3,7 +3,6 @@ import { useQuery } from "@apollo/client";
 import ProgramShortDescription from "../components/program/ProgramShortDescription";
 import ProgramDiagram from "../components/program/ProgramDiagram";
 import ProgramDayOverview from "../components/program/ProgramDayOverview";
-import ProgramStartButton from "../components/program/ProgramStartButton";
 import { GET_PROGRAM } from "../queries/hygraphQueries";
 
 function Program() {
@@ -24,6 +23,8 @@ function Program() {
 
   const queryParams = new URLSearchParams(location.search);
   const style = queryParams.get("style") || "";
+
+  // mapen
 
   const workoutsWithCategories = [];
   if (program.workoutsWithDay) {
@@ -69,7 +70,10 @@ function Program() {
         <p>{program.description}</p>
       </div>
       <ProgramDiagram workouts={workoutsWithCategories} />
-      <ProgramDayOverview dayLength={lastDay} workoutsWithCategories={workoutsWithCategories} />
+      <ProgramDayOverview
+        dayLength={lastDay}
+        workoutsWithCategories={workoutsWithCategories}
+      />
     </div>
   );
 }

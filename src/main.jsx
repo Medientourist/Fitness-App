@@ -64,7 +64,7 @@ const router = createBrowserRouter([
   {
     path: "/trainingActive/:id",
     element: <TrainingActive />,
-  }
+  },
 ]);
 
 root.render(
