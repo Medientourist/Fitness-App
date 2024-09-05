@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_WORKOUT } from "../queries/hygraphQueries";
-import { useState } from "react";
 
 import TrainingHeader from "../components/TrainingActive/TrainingHeader";
 import ProgressProgram from "../components/progressComponent/ProgressProgram";

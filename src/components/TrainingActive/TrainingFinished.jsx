@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
-import { saveToStorage, loadFromStorage } from "../../utils/storage";
-import { GET_PROGRAM } from "../../queries/hygraphQueries";
+import { saveToSessionStorage } from "../../utils/storage";
 
 function TrainingFinished({ programId, workoutId, day, style }) {
+  const STORAGE_KEY = "trainingFinishedData";
 
-  const saveProgrammProgress = ( GET_PROGRAM )
+  const handleSave = () => {
+    const data = {
+      programId,
+      day,
+      style,
+    };
+    saveToSessionStorage(STORAGE_KEY, data);
+  };
 
   return (
     <div className="bg-dark text-center">
@@ -18,11 +25,9 @@ function TrainingFinished({ programId, workoutId, day, style }) {
           <button className="bg-medium p-4 flex-1 mx-2">genau richtig</button>
           <button className="bg-medium p-4 flex-1 mx-2">zu schwer</button>
         </div>
-        <Link
-          to={`/program/${programId}?workoutId=${encodeURIComponent(
-            workoutId
-          )}&day=${encodeURIComponent(day)}&style=${encodeURIComponent(style)}`}
-        >
+
+        {/* Link mit onClick-Handler, um Daten in localStorage zu speichern */}
+        <Link to={`/`} onClick={handleSave}>
           Bewertung überspringen
         </Link>
       </div>

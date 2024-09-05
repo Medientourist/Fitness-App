@@ -1,4 +1,6 @@
-function StartToday() {
+import { Link } from "react-router-dom";
+
+function StartToday({ programId, workout, day, style }) {
   return (
     <div className="py-4">
       <div className="mb-5 px-4">
@@ -6,9 +8,20 @@ function StartToday() {
         <a className="text-white">Trainingsplan</a>
       </div>
       <div className="px-4">
-        <button className="bg-medium text-white text-left pt-12 pb-5 pl-5 w-full rounded-3xl">
-          Tag 2 <br /> Titel des Programms <br /> 26 Min. Beweglichkeit
-        </button>
+        <Link
+          to={`/training/${encodeURIComponent(
+            programId
+          )}?workoutId=${encodeURIComponent(
+            workout.id
+          )}&day=${encodeURIComponent(day)}&style=${encodeURIComponent(style)}`}
+          className={`${style} block px-4 text-white my-4 py-8 w-full rounded-3xl`}
+        >
+          <p className="text-xl">Tag {day}</p>
+          <h3 className={`text-2xl`}>{workout.name}</h3>
+          <p className="text-lg">
+            {workout.duration} Min. • {workout.category}
+          </p>
+        </Link>
       </div>
     </div>
   );

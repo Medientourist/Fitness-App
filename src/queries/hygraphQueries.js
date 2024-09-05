@@ -57,6 +57,7 @@ export const GET_WORKOUT = gql`
       id
       name
       category
+      duration
       exercises {
         ... on ExerciseWithDuration {
           id
@@ -74,6 +75,36 @@ export const GET_WORKOUT = gql`
             id
             name
             description
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_WORKOUT_BY_DAY = gql`
+  query GetWorkoutByDay($programId: ID!, $day: Int!) {
+    program(where: { id: $programId }) {
+      id
+      workoutsWithDay(where: { day: $day }) {
+        id
+        day
+        workout {
+          id
+          name
+          category
+          duration
+          exercises {
+            ... on ExerciseWithDuration {
+              id
+              duration
+              stage
+            }
+            ... on ExerciseWithReps {
+              id
+              reps
+              stage
+            }
           }
         }
       }

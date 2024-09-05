@@ -30,6 +30,9 @@ export default function TrainingStart({ programId, workoutId, day, style }) {
   const { program } = dataProgram;
   const { workout } = dataWorkout;
 
+  console.log(dataWorkout);
+  console.log(workout.duration);
+
   return (
     <div className="bg-dark min-h-screen flex flex-col justify-between text-center">
       <div className="w-full flex justify-center items-center relative py-4">
@@ -43,7 +46,9 @@ export default function TrainingStart({ programId, workoutId, day, style }) {
       </div>
       <div className="flex flex-col justify-center items-center flex-grow">
         <h2>Tag {day}</h2>
-        <p>26 Min. • {workout.category}</p>
+        <p>
+          {workout.duration} Min. • {workout.category}
+        </p>
         <TrainingStartButton
           programId={programId}
           workoutId={workoutId}

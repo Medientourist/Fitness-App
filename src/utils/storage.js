@@ -1,21 +1,19 @@
-export const saveToLocalStorage = (key) => {
-  const setItem = (value) => {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      console.error("Error saving data to storage", error);
-    }
-  };
+// Speichern von Daten in sessionStorage
+export const saveToSessionStorage = (key, value) => {
+  try {
+    sessionStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.error("Error saving data to session storage", error);
+  }
 };
 
-export const loadFromLocalStorage = (key) => {
-  const getItem = () => {
-    try {
-      const data = localStorage.getItem(key);
-      return data ? JSON.parse(data) : null;
-    } catch (error) {
-      console.error("Error loading data from storage", error);
-      return null;
-    }
-  };
+// Laden von Daten aus sessionStorage
+export const loadFromSessionStorage = (key) => {
+  try {
+    const data = sessionStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
+  } catch (error) {
+    console.error("Error loading data from session storage", error);
+    return null;
+  }
 };
