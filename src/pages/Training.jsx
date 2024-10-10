@@ -3,11 +3,6 @@ import { useQuery, gql } from "@apollo/client";
 import TrainingStart from "../components/training/TrainingStart";
 import { GET_WORKOUT } from "../queries/hygraphQueries";
 
-/*
-Apollo DevTools
-React DevTools
-*/
-
 function Training() {
   const params = useParams();
   const location = useLocation();

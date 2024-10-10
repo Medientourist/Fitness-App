@@ -1,9 +1,9 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import back from "../../assets/back.png";
-import { useParams, useLocation } from "react-router-dom";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { GET_PROGRAM, GET_WORKOUT } from "../../queries/hygraphQueries";
 import TrainingStartButton from "./TrainingStartButton";
+import back from "../../assets/back.png";
 
 export default function TrainingStart({ programId, workoutId, day, style }) {
   const {
@@ -30,15 +30,14 @@ export default function TrainingStart({ programId, workoutId, day, style }) {
   const { program } = dataProgram;
   const { workout } = dataWorkout;
 
-  console.log(dataWorkout);
-  console.log(workout.duration);
-
   return (
     <div className="bg-dark min-h-screen flex flex-col justify-between text-center">
       <div className="w-full flex justify-center items-center relative py-4">
         <h1 className="text-base">{program.name}</h1>
         <Link
-          to={`/program/${programId}?style=${encodeURIComponent(style)}`}
+          to={`/program/${programId}?day=${encodeURIComponent(
+            day
+          )}&style=${encodeURIComponent(style)}`}
           className="absolute right-4"
         >
           <img src={back} alt="back" className="w-6 h-6" />
@@ -59,3 +58,10 @@ export default function TrainingStart({ programId, workoutId, day, style }) {
     </div>
   );
 }
+
+TrainingStart.propTypes = {
+  programId: PropTypes.string.isRequired,
+  workoutId: PropTypes.string.isRequired,
+  day: PropTypes.string.isRequired,
+  style: PropTypes.string.isRequired,
+};

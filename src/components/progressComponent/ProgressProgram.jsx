@@ -1,31 +1,11 @@
-import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import React from "react";
 import ProgressBar from "./ProgressBar";
 
-const pointSize = 8;
-const spaceBetweenPoints = 20;
-
-function ProgressProgram({ length, currentStep }) {
-  // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setScreenWidth(window.innerWidth);
-  //   };
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
-  
-  // const MidScreen = screenWidth / 2;
-  // console.log(MidScreen);
-  // const calculatedPaddingLeft =
-  //   MidScreen - (pointSize / 2 + currentStep * spaceBetweenPoints);
-  // console.log(calculatedPaddingLeft);
-  // const paddingLeft = `${calculatedPaddingLeft}px`;
-  // console.log(paddingLeft);
-
-  currentStep = currentStep + 1;
+function ProgressProgram({ length, currentStep, style }) {
+  currentStep += 1;
   const isBreak = [];
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < length; i += 1) {
     isBreak.push(false);
     if (i < length - 1) {
       isBreak.push(true);
@@ -33,11 +13,16 @@ function ProgressProgram({ length, currentStep }) {
   }
 
   return (
-    <div className="flex overflow-x-hidden w-full">
-      {/* style={paddingLeft} */}
-      <ProgressBar isBreak={isBreak} currentStep={currentStep} />
+    <div className="flex overflow-hidden mt-8">
+      <ProgressBar isBreak={isBreak} currentStep={currentStep} style={style} />
     </div>
   );
 }
+
+ProgressProgram.propTypes = {
+  length: PropTypes.number.isRequired,
+  currentStep: PropTypes.number.isRequired,
+  style: PropTypes.string.isRequired,
+};
 
 export default ProgressProgram;

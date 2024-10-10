@@ -4,12 +4,11 @@ import ProgramShortDescription from "../components/program/ProgramShortDescripti
 import ProgramDiagram from "../components/program/ProgramDiagram";
 import ProgramDayOverview from "../components/program/ProgramDayOverview";
 import { GET_PROGRAM } from "../queries/hygraphQueries";
+import { loadFromSessionStorage } from "../utils/storage";
 
 function Program() {
-  const i = 0;
   const params = useParams();
   const location = useLocation();
-
   const filteredId = params.id;
 
   const { loading, error, data } = useQuery(GET_PROGRAM, {
@@ -24,47 +23,37 @@ function Program() {
   const queryParams = new URLSearchParams(location.search);
   const style = queryParams.get("style") || "";
 
-  // mapen
+  const savedData = loadFromSessionStorage("trainingFinishedData");
+  const savedProgramId = savedData?.programId;
+  const isSameProgram = savedProgramId === program.id;
 
-  const workoutsWithCategories = [];
-  if (program.workoutsWithDay) {
-    program.workoutsWithDay.forEach((workoutWithDay) => {
-      workoutsWithCategories.push({
+  const workoutDay = program.workoutsWithDay
+    ? program.workoutsWithDay.map((workoutWithDay) => ({
+        day: workoutWithDay.day,
+        workoutId: workoutWithDay.workout.id,
+      }))
+    : [];
+
+  const workoutsWithCategories = program.workoutsWithDay
+    ? program.workoutsWithDay.map((workoutWithDay) => ({
         id: workoutWithDay.id,
         day: workoutWithDay.day,
         innerId: workoutWithDay.workout.id,
         name: workoutWithDay.workout.name,
         category: workoutWithDay.workout.category,
         duration: workoutWithDay.workout.duration,
-      });
-    });
-  }
-
-  const workoutDay = [];
-  if (program.workoutsWithDay) {
-    program.workoutsWithDay.forEach((workoutWithDay) => {
-      workoutDay.push({
-        day: workoutWithDay.day,
-        workoutId: workoutWithDay.workout.id,
-      });
-    });
-  }
-
-  const lastDay = workoutDay[workoutDay.length - 1].day;
+      }))
+    : [];
+  const lastDay = workoutDay[workoutDay.length - 1]?.day || 0;
 
   return (
     <div className="bg-dark pb-[4.5rem]">
       <ProgramShortDescription
         key={program.id}
-        programId={program.id}
-        title={program.name}
-        focus={program.focus}
-        difficulty={program.difficulty}
-        duration={program.duration}
-        description={program.description}
-        workoutId={workoutDay[i].workoutId}
-        day={workoutDay[i].day}
+        program={program}
+        workoutDay={workoutDay[0]}
         style={style}
+        isSameProgram={isSameProgram}
       />
       <div className="p-4 bg-medium">
         <p>{program.description}</p>
@@ -73,6 +62,8 @@ function Program() {
       <ProgramDayOverview
         dayLength={lastDay}
         workoutsWithCategories={workoutsWithCategories}
+        programId={filteredId}
+        style={style}
       />
     </div>
   );

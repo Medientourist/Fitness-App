@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import TrainingStop from "./TrainingStop";
@@ -24,7 +25,7 @@ function TrainingHeader({ programId, workoutId, day, style }) {
   };
 
   return (
-    <div className="text-center relative mt-4">
+    <div className="text-center relative pt-4 mb-4">
       <div className="flex items-center justify-center">
         <p className="text-white">{workout.name}</p>
         <img
@@ -36,7 +37,7 @@ function TrainingHeader({ programId, workoutId, day, style }) {
       </div>
       {isClicked && (
         <>
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+          <div className="fixed flex items-center justify-center inset-0 bg-black bg-opacity-50 z-10 p-4">
             <TrainingStop
               programId={programId}
               workoutId={workoutId}
@@ -50,5 +51,12 @@ function TrainingHeader({ programId, workoutId, day, style }) {
     </div>
   );
 }
+
+TrainingHeader.propTypes = {
+  programId: PropTypes.string.isRequired,
+  workoutId: PropTypes.string.isRequired,
+  day: PropTypes.string.isRequired,
+  style: PropTypes.string.isRequired,
+};
 
 export default TrainingHeader;

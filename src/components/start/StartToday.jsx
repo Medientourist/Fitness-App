@@ -1,23 +1,37 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function StartToday({ programId, workout, day, style }) {
+  console.log(style);
   return (
-    <div className="py-4">
-      <div className="mb-5 px-4">
-        <h2 className="inline mr-4">Dein Workout heute</h2>
-        <a className="text-white">Trainingsplan</a>
+    <div className="px-4 w-full">
+      <div className="flex flex-row justify-between items-center mb-4">
+        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl">
+          Dein Workout heute
+        </h2>
+        <Link
+          className="text-sm hover:text-orange-500 sm:text-base md:text-lg"
+          to={`/program/${encodeURIComponent(
+            programId
+          )}?workoutId=${encodeURIComponent(
+            workout.id
+          )}&day=${encodeURIComponent(day)}&style=${encodeURIComponent(style)}`}
+        >
+          Trainingsplan
+        </Link>
       </div>
-      <div className="px-4">
+
+      <div className="">
         <Link
           to={`/training/${encodeURIComponent(
             programId
           )}?workoutId=${encodeURIComponent(
             workout.id
           )}&day=${encodeURIComponent(day)}&style=${encodeURIComponent(style)}`}
-          className={`${style} block px-4 text-white my-4 py-8 w-full rounded-3xl`}
+          className={`${style} block p-4 text-white w-full rounded-3xl hover:text-black`}
         >
           <p className="text-xl">Tag {day}</p>
-          <h3 className={`text-2xl`}>{workout.name}</h3>
+          <h3 className="text-2xl">{workout.name}</h3>
           <p className="text-lg">
             {workout.duration} Min. • {workout.category}
           </p>
@@ -26,5 +40,17 @@ function StartToday({ programId, workout, day, style }) {
     </div>
   );
 }
+
+StartToday.propTypes = {
+  programId: PropTypes.string.isRequired,
+  workout: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    duration: PropTypes.number.isRequired,
+    category: PropTypes.string.isRequired,
+  }).isRequired,
+  day: PropTypes.number.isRequired,
+  style: PropTypes.string.isRequired,
+};
 
 export default StartToday;

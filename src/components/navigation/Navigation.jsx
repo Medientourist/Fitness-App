@@ -7,9 +7,6 @@ import workoutLight from "../../assets/workoutLight.png";
 import profilDark from "../../assets/profilDark.png";
 import profilLight from "../../assets/profilLight.png";
 
-// Generischer Import * import
-// Object für Images
-
 function Navigation() {
   const location = useLocation();
   const currentPath = location.pathname;
@@ -18,22 +15,36 @@ function Navigation() {
   const workoutImage = currentPath === "/workout" ? workoutLight : workoutDark;
   const profilImage = currentPath === "/profil" ? profilLight : profilDark;
 
+  const imgStyle = "hover:scale-150 transition-transform duration-300";
+
   return (
     <div className="bg-black fixed w-full bottom-0">
       <nav className="flex justify-around space-x-8 p-4">
         <div className="inline">
           <Link to="/">
-            <img src={startImage} alt="Startseite" />
+            <img
+              src={startImage}
+              alt="Startseite"
+              className={imgStyle}
+            />
           </Link>
         </div>
         <div className="inline">
           <Link to="/workout">
-            <img src={workoutImage} alt="Training" />
+            <img
+              src={workoutImage}
+              alt="Training"
+              className={imgStyle}
+            />
           </Link>
         </div>
         <div className="inline">
           <Link to="/profil">
-            <img src={profilImage} alt="Profil" />
+            <img
+              src={profilImage}
+              alt="Profil"
+              className={imgStyle}
+            />
           </Link>
         </div>
       </nav>

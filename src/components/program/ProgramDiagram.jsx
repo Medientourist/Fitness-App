@@ -7,7 +7,7 @@ function ProgramDiagram({ workouts }) {
       <p className="mb-4 text-lg font-bold text-white">
         So ist das Programm aufgeteilt:
       </p>
-      <div className="flex justify-center items-center h-96 w-full">
+      <div className="mb-8">
         <ProgramPieChart workouts={workouts} />
       </div>
     </div>

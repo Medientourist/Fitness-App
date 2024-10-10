@@ -51,6 +51,15 @@ export const GET_PROGRAM = gql`
   }
 `;
 
+export const GET_PROGRAMS_OVERVIEW = gql`
+  query GetProgramsOverview($limit: Int!, $offset: Int!) {
+    programs(first: $limit, skip: $offset) {
+      id
+      name
+    }
+  }
+`;
+
 export const GET_WORKOUT = gql`
   query GetWorkout($id: ID!) {
     workout(where: { id: $id }) {

@@ -3,16 +3,16 @@ import { useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_WORKOUT } from "../queries/hygraphQueries";
 
-import TrainingHeader from "../components/TrainingActive/TrainingHeader";
+import TrainingHeader from "../components/trainingActive/TrainingHeader";
 import ProgressProgram from "../components/progressComponent/ProgressProgram";
-import TrainingBack from "../components/TrainingActive/TrainingBack";
-import TrainingForward from "../components/TrainingActive/TrainingForward";
-import TrainingTimer from "../components/TrainingActive/TrainingTimer";
-import TrainingRepetition from "../components/TrainingActive/TrainingRepetition";
-import TrainingMoreInformation from "../components/TrainingActive/TrainingMoreInformation";
-import TrainingBreak from "../components/TrainingActive/TrainingBreak";
-import TrainingSkip from "../components/TrainingActive/TrainingSkip";
-import TrainingFinished from "../components/TrainingActive/TrainingFinished";
+import TrainingBack from "../components/trainingActive/TrainingBack";
+import TrainingForward from "../components/trainingActive/TrainingForward";
+import TrainingTimer from "../components/trainingActive/TrainingTimer";
+import TrainingRepetition from "../components/trainingActive/TrainingRepetition";
+import TrainingMoreInformation from "../components/trainingActive/TrainingMoreInformation";
+import TrainingBreak from "../components/trainingActive/TrainingBreak";
+import TrainingSkip from "../components/trainingActive/TrainingSkip";
+import TrainingFinished from "../components/trainingActive/TrainingFinished";
 
 function TrainingActive() {
   const location = useLocation();
@@ -37,8 +37,6 @@ function TrainingActive() {
   const { workout } = data;
   const currentExercise = workout.exercises[exerciseNumber];
 
-  // Berechnung der aktuellen Schritte unter Berücksichtigung der Pausen
-  const totalSteps = workout.exercises.length * 2 - 1;
   const currentStep = isBreak ? exerciseNumber * 2 : exerciseNumber * 2 - 1;
 
   const handleBack = () => {
@@ -66,12 +64,10 @@ function TrainingActive() {
     }
   };
 
-  const backgroundColorClass = isBreak ? "bg-medium" : "bg-dark";
-
+  const backgroundColorClass = isBreak ? "bg-medium" : "";
+  console.log(backgroundColorClass);
   return (
-    <div
-      className={`${backgroundColorClass} min-h-screen flex flex-col text-center`}
-    >
+    <div className={`${backgroundColorClass} min-h-screen text-center`}>
       {exerciseNumber < workout.exercises.length ? (
         <>
           <TrainingHeader
@@ -83,8 +79,9 @@ function TrainingActive() {
           <ProgressProgram
             length={workout.exercises.length}
             currentStep={currentStep}
+            style={style}
           />
-          <div className="flex items-center justify-between mt-16">
+          <div className="flex justify-between items-center px-4 mt-4 min-h-[50vh]">
             <TrainingBack
               onClick={handleBack}
               back={exerciseNumber === 0 && !isBreak}
@@ -93,15 +90,16 @@ function TrainingActive() {
               day={day}
               style={style}
             />
-            <div>
-              {isBreak ? (
-                <TrainingBreak />
-              ) : currentExercise.duration > 0 ? (
-                <TrainingTimer time={currentExercise.duration} />
-              ) : (
+            <div className="inline w-1/2 max-w-sm">
+              {isBreak && <TrainingBreak style={style} />}
+              {!isBreak && currentExercise.duration > 0 && (
+                <TrainingTimer time={currentExercise.duration} style={style} />
+              )}
+              {!isBreak && currentExercise.reps > 0 && (
                 <TrainingRepetition repetition={currentExercise.reps} />
               )}
             </div>
+
             <TrainingForward
               onClick={handleForward}
               programId={programId}
@@ -112,7 +110,7 @@ function TrainingActive() {
           </div>
           {isBreak ? (
             <>
-              <h2>Pause</h2>
+              <h2 className="mt-4 ">Pause</h2>
               <TrainingSkip handleForward={handleForward} />
             </>
           ) : null}
