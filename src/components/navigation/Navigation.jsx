@@ -22,29 +22,17 @@ function Navigation() {
       <nav className="flex justify-around space-x-8 p-4">
         <div className="inline">
           <Link to="/">
-            <img
-              src={startImage}
-              alt="Startseite"
-              className={imgStyle}
-            />
+            <img src={startImage} alt="Startseite" className={imgStyle} />
           </Link>
         </div>
         <div className="inline">
           <Link to="/workout">
-            <img
-              src={workoutImage}
-              alt="Training"
-              className={imgStyle}
-            />
+            <img src={workoutImage} alt="Training" className={imgStyle} />
           </Link>
         </div>
         <div className="inline">
           <Link to="/profil">
-            <img
-              src={profilImage}
-              alt="Profil"
-              className={imgStyle}
-            />
+            <img src={profilImage} alt="Profil" className={imgStyle} />
           </Link>
         </div>
       </nav>

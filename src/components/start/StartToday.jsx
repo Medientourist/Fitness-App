@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function StartToday({ programId, workout, day, style }) {
-  console.log(style);
   return (
     <div className="px-4 w-full">
       <div className="flex flex-row justify-between items-center mb-4">

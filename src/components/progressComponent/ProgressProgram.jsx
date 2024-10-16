@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import React from "react";
 import ProgressBar from "./ProgressBar";
 
 function ProgressProgram({ length, currentStep, style }) {

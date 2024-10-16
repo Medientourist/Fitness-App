@@ -1,7 +1,7 @@
 module.exports = {
   content: ["./src/**/*.{vue,js,ts,jsx,tsx}"],
 
-  mode: 'jit',
+  mode: "jit",
   theme: {
     extend: {
       colors: {
@@ -24,8 +24,8 @@ module.exports = {
         standard: ["Poppins"],
       },
       boxShadow: {
-        'dayColorShadow': '10px 10px 15px -3px'
-      }
+        dayColorShadow: "10px 10px 15px -3px",
+      },
     },
   },
   plugins: [],

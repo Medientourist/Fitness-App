@@ -15,7 +15,6 @@ function ProgramStartButton({ programId, workoutId, day, style }) {
         Jetzt starten
       </Link>
     </div>
-    
   );
 }
 ProgramStartButton.propTypes = {
