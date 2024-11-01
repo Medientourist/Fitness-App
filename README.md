@@ -103,20 +103,4 @@ Stelle sicher, dass du die folgenden Tools installiert hast:
    6. cd Fitness-App
    7. yarn install
    8. yarn dev
-      
-
-
-
-Projektstruktur
-
-Die Projektstruktur enthält folgende Hauptverzeichnisse und Dateien:
-
-Fitness-App/
- ── src/
-    ├── assets/             # Statische Ressourcen wie Bilder und Icons
-    ├── components/         # Wiederverwendbare UI-Komponenten
-    ├── pages/              # Hauptseiten wie Startseite, Trainingseinheit, Profilseite
-    ├── queries/              # Haupteinstiegspunkt der App
-    └── utils/            # Einstiegspunkt für das Rendering in React
-
 
