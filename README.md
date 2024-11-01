@@ -65,6 +65,48 @@ Die Fitness-App wurde mit den folgenden Technologien entwickelt:
 
 ---
 
+## Voraussetzungen
+
+Stelle sicher, dass du die folgenden Tools installiert hast:
+- **Git**: Zum Klonen des Repositories.
+- **Node.js**: Um JavaScript-Umgebungen zu erstellen.
+- **Yarn**: Als Paketmanager.
+
+## Installation
+   ### Linux
+   1. Falls Git noch nicht installiert ist, kannst du es mit folgendem Befehl installieren:
+      sudo apt install git
+   2. Klone das Repository:
+      git clone https://github.com/Medientourist/Fitness-App.git
+   3. Falls node noch nicht installiert ist, kannst du es mit folgendem Befehl installieren:
+      Prüfe vorher mit
+      node -v
+      Ansonsten:
+      sudo apt install nodejs
+   4. sudo apt update
+   5. sudo apt install yarn
+   6. cd Fitness-App
+   7. yarn install
+   8. yarn dev
+
+   ### Windows
+   1. Lade den Git-Installer für Windows von der offiziellen Website herunter: [Git für Windows](https://git-scm.com/download/win) und folge den Installationsanweisungen.
+      Nach der Installation kannst du die Eingabeaufforderung oder PowerShell verwenden, um Git zu überprüfen:
+      git --version
+   2. Lade die neueste Version von Node.js von der offiziellen Website herunter: Node.js und führe den Installer aus.
+      Prüfe vorher mit
+      node -v
+   3. npm install --global yarn
+   4. yarn -v
+   5. Klone das Repository:
+      git clone https://github.com/Medientourist/Fitness-App.git
+   6. cd Fitness-App
+   7. yarn install
+   8. yarn dev
+      
+
+
+
 Projektstruktur
 
 Die Projektstruktur enthält folgende Hauptverzeichnisse und Dateien:
