@@ -57,10 +57,10 @@ Die **Fitness-App** wurde zu Übungszwecken erstellt und basiert konzeptionell a
 
 Die Fitness-App wurde mit den folgenden Technologien entwickelt:
 
-- [React](https://reactjs.org/) - Für die UI und Komponentenstruktur
-- [Tailwind CSS](https://tailwindcss.com/) - Für ein flexibles und responsives Design
-- [Apollo Client](https://www.apollographql.com/docs/react/) - Für die Anbindung an GraphQL
-- [GraphQL]
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [GraphQL](https://graphql.org/)
 
 ---
 
