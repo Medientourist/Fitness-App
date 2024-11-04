@@ -6,7 +6,6 @@ Benutzer können Test-Trainings durchführen und deren Fortschritt verfolgen. Di
 
 ## Projektansicht
 
-![Projekt auf Netlify]
 https://fitness-app-medientourist.netlify.app/
 
 ## Inhaltsverzeichnis
