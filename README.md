@@ -4,10 +4,10 @@
 Die **Fitness-App** ist ein Übungsprojekt ohne Anspruch auf vollständige Nutzbarkeit, das grundlegende Funktionen einer Fitness-App simuliert.
 Benutzer können Test-Trainings durchführen und deren Fortschritt verfolgen. Die App wurde mit **React** und **Tailwind CSS** entwickelt.
 
-## Vorschau
+## Projektansicht
 
-![Projektvorschau](URL-zum-Bild)  
-Bilder noch einzufügen.
+![Projekt auf Netlify]
+https://fitness-app-medientourist.netlify.app/
 
 ## Inhaltsverzeichnis
 
@@ -15,7 +15,6 @@ Bilder noch einzufügen.
 - [Features](#features)
 - [Technologien](#technologien)
 - [Installation](#installation)
-- [Projektstruktur](#projektstruktur)
 
 ---
 
